@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
-export const Container = styled.a`
+export const Container = styled(Link)`
   color: ${props => props.theme['blue']};
   text-decoration: none;
   position: relative;
@@ -10,6 +11,7 @@ export const Container = styled.a`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  font-weight: bold;
 
   &::before{
     position: absolute;

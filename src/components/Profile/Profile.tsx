@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { api } from "../../utils/axios"
-import { Avatar, Description, Footer, FooterInfo, HeaderContainer, ProfileContainer } from "./style";
+import { Avatar, Description, Footer, HeaderContainer, InfoTest, ProfileContainer } from "./style";
 import { Links } from "../Links";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import { FooterInfo } from "../Info/style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SkeletonProfile } from "./SkeletonProfile";
 
 const USER = 'gabrielmxn';
 
@@ -15,24 +17,28 @@ interface GetProfileAxiosTypes {
   followers: number
   bio: string
   html_url: string
+  company: string
 
 }
 export function ProfileComponent(){
   const [profile, setProfile] = useState<GetProfileAxiosTypes>({} as GetProfileAxiosTypes)
 
   async function getProfile(){
-    const response = await api.get<GetProfileAxiosTypes>(`/users/${USER}`)
+    setTimeout(async () => {
+      const response = await api.get<GetProfileAxiosTypes>(`/users/${USER}`)
 
-    setProfile(response.data)
+      setProfile(response.data)
+    }, 4000)
+    
   }
   useEffect(() => {
     getProfile()
   }, [])
   return(
     <>
-   {profile.login && (  <ProfileContainer>
+    {profile.login ? (  <ProfileContainer>
       <Avatar src={profile.avatar_url} alt="" />
-      <div>
+      <InfoTest>
         <HeaderContainer>
           <h1>{profile.name}</h1>
           <Links label="GITHUB" url={profile.html_url}/>
@@ -45,15 +51,15 @@ export function ProfileComponent(){
           </FooterInfo>
           <FooterInfo>
             <FontAwesomeIcon icon={faBuilding} />
-            <span>CEPEL</span>
+            <span>{profile.company}</span>
           </FooterInfo>
           <FooterInfo>
             <FontAwesomeIcon icon={faUserGroup} /> 
             <span>{profile.followers} seguidores</span>
           </FooterInfo>
         </Footer>
-      </div>
-    </ProfileContainer>)}
+      </InfoTest>
+    </ProfileContainer>) : <SkeletonProfile />}
    </>
   )
 }

@@ -55,18 +55,28 @@ export const Footer = styled.footer`
 
 `
 
-export const FooterInfo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+export const InfoTest = styled.div`
+  flex: 1;
+`
 
-  svg {
-    color: ${props => props.theme['base-label']};
+interface SkeletonProps {
+  width: string
+  height: string
+}
+export const Skeleton = styled.div<SkeletonProps>`
+  background-color: ${props => props.theme['blue']};
+  width: ${props => `${props.width}`};
+  height: ${props => `${props.height}`};
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  animation: pulse 2s ease-in-out infinite;
+  @keyframes pulse {
+    0%{
+      opacity: 1;
+    }
+
+    50%{
+      opacity: 0.6;
+    }
   }
-
-  span {
-    color: ${props => props.theme['base-subtitle']};
-  }
-
 `
