@@ -4,13 +4,16 @@ import { HeaderComponent } from "./components/Header/Header";
 import { GlobalStyles } from "./styles/global";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./Route";
+import { RepoInfoContext } from "./context/RepoInfoContext";
 
 export function App() {
  return(
   <ThemeProvider theme={defaultTheme}>
-     <HeaderComponent />
-      <RouterProvider  router={router}  />
-     <GlobalStyles />
+      <RepoInfoContext>
+         <HeaderComponent />
+         <RouterProvider  router={router}  />
+         <GlobalStyles />
+     </RepoInfoContext>
   </ThemeProvider>
  )
 }

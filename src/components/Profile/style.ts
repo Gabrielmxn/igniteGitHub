@@ -67,7 +67,6 @@ export const Skeleton = styled.div<SkeletonProps>`
   background-color: ${props => props.theme['blue']};
   width: ${props => `${props.width}`};
   height: ${props => `${props.height}`};
-  margin-top: 0.5rem;
   border-radius: 4px;
   animation: pulse 2s ease-in-out infinite;
   @keyframes pulse {

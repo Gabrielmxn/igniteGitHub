@@ -35,3 +35,18 @@ export const CardsContainer = styled.div`
   align-items: center;
   gap: 2rem;
 `
+
+
+
+export const InfoPublicationNumber = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  line-height: 0;
+
+  span{
+    line-height: 0;
+  }
+`

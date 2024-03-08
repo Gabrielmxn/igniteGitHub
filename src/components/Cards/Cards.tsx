@@ -1,6 +1,5 @@
 import { Container, HeaderCard } from "./style";
-import { formatDistanceToNowStrict } from "date-fns";
-import { ptBR } from "date-fns/locale/pt-BR";
+import { formatDistanceDate } from "../../utils/formatDate";
 
 
 export interface CardsComponent {
@@ -14,9 +13,7 @@ export function CardsComponent({title, description, created_at, number}: CardsCo
     <Container href={`/post/${number}`}>
       <HeaderCard>
         <h2>{title}</h2>
-        <span>Há {formatDistanceToNowStrict(created_at, {
-          locale: ptBR,
-        })}</span>
+        <span>Há {formatDistanceDate(created_at)}</span>
       </HeaderCard>
       <p>{description}</p>
     </Container>

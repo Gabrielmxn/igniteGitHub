@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { api } from "../../utils/axios"
 import { Avatar, Description, Footer, HeaderContainer, InfoTest, ProfileContainer } from "./style";
 import { Links } from "../Links";
@@ -7,8 +7,9 @@ import { faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { FooterInfo } from "../Info/style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SkeletonProfile } from "./SkeletonProfile";
+import { InfoContext } from "../../context/RepoInfoContext";
 
-const USER = 'gabrielmxn';
+
 
 interface GetProfileAxiosTypes {
   avatar_url: string
@@ -22,10 +23,11 @@ interface GetProfileAxiosTypes {
 }
 export function ProfileComponent(){
   const [profile, setProfile] = useState<GetProfileAxiosTypes>({} as GetProfileAxiosTypes)
+  const { user } = useContext(InfoContext)
 
   async function getProfile(){
     setTimeout(async () => {
-      const response = await api.get<GetProfileAxiosTypes>(`/users/${USER}`)
+      const response = await api.get<GetProfileAxiosTypes>(`/users/${user}`)
 
       setProfile(response.data)
     }, 4000)
@@ -49,10 +51,10 @@ export function ProfileComponent(){
             <FontAwesomeIcon icon={faGithub} /> 
             <span>{profile.login.toLowerCase()}</span>
           </FooterInfo>
-          <FooterInfo>
+          {profile.company && <FooterInfo>
             <FontAwesomeIcon icon={faBuilding} />
             <span>{profile.company}</span>
-          </FooterInfo>
+          </FooterInfo>}
           <FooterInfo>
             <FontAwesomeIcon icon={faUserGroup} /> 
             <span>{profile.followers} seguidores</span>

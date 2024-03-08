@@ -1,13 +1,15 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { Cards } from "../Cards";
 import { CardsContainer, Container, HeaderInfo, InputSearch } from "./style";
 import { api } from "../../utils/axios";
 import { useForm } from "react-hook-form";
 import * as z from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
+import { InfoContext } from "../../context/RepoInfoContext";
+import { useContextApiInfoUserAndRepo } from "../../hook/useContextApiInfoUserAndRepo";
+import { SkeletonPublication } from "./SkeletonPublication";
 
-const USER = 'rocketseat-education'
-const REPO = 'reactjs-github-blog-challenge'
+
 interface RepositoryType {
   id: number
   name: string
@@ -30,6 +32,8 @@ const schema = z.object({
 });
 
 export function PublicationComponent(){
+
+  const {user, repo} = useContextApiInfoUserAndRepo()
   const { register, handleSubmit, getValues  } = useForm({
     resolver: zodResolver(schema),
   });
@@ -38,20 +42,25 @@ export function PublicationComponent(){
     total_count: 0
   })
 
+  console.log('item', posts.items)
 
   async function getPosts(event?: ChangeEvent){
     const query = `${getValues('query')} ` || ' '
    try{
-    const response = await api.get<AxiosPostsType>(`/search/issues?q=${query}repo:${USER}/${REPO}`)
+    setTimeout(async () => {
+      const response = await api.get<AxiosPostsType>(`/search/issues?q=${query}repo:${user}/${repo}`)
     console.log(response.data.items[0].body.slice(0,200))
-    setPosts(response.data)
+    if(response.data.total_count > 0){
+      setPosts(response.data)
+    }
+    }, 2000)
    }catch(error){
     console.log(error)
    }
   }
 
   async function getRepositorys(){
-    const response = await api.get<RepositoryType[]>(`/users/${USER}/repos`)
+    const response = await api.get<RepositoryType[]>(`/users/${user}/repos`)
     const repository = response.data.filter(response => response.open_issues_count > 0).map(repo => {
       return {
         id: repo.id,
@@ -69,6 +78,7 @@ export function PublicationComponent(){
   }, [])
   return(
     <>
+    {posts.total_count > 0 ? 
       <Container>
         <HeaderInfo>
           <h2>Publicações</h2>
@@ -80,12 +90,13 @@ export function PublicationComponent(){
           })} type="text" placeholder="Buscar conteúdo"/>
         </form>
       </Container>
+        : <SkeletonPublication />}
       <CardsContainer>
-        {posts.total_count > 0 && posts.items.map(response => {
+        {posts.items.map(response => {
          
           return(
             <Cards 
-              key={response.title}
+              key={response.number}
               number={response.number}
               description={response.body}
               title={response.title}

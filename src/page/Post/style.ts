@@ -1,3 +1,4 @@
+import Markdown from "react-markdown";
 import styled from "styled-components";
 
 
@@ -44,4 +45,55 @@ export const Back = styled.a`
   gap: 0.5rem;
   color: ${props => props.theme['blue']};
   font-weight: 700;
+`
+
+export const BodyPost = styled(Markdown)`
+  padding: 2.5rem 2rem;
+  img{
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  p{
+    margin: 1rem auto;
+  }
+
+  a{
+    text-decoration: none;
+    color: ${props => props.theme['blue']};
+    position: relative;
+    &::after{
+      content: "";
+      background-color: ${props => props.theme['blue']};
+      width: 0%;
+      height: 1px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: width 0.4s ease-in-out;
+    }
+    
+    &:hover::after{
+      content: "";
+      background-color: ${props => props.theme['blue']};
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: width 0.2s ease-in-out;
+    }
+  }
+
+  pre {
+    padding: 1rem;
+    background-color: ${props => props.theme['base-post']};
+    width: 100%;
+    border-radius: 8px;
+
+    code {
+      width: 100%;
+    }
+  }
 `
