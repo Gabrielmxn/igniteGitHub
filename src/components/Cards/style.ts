@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Container = styled.a`
-    text-decoration: none;
+export const Container = styled.div`
+    position: relative;
     color: ${props => props.theme['base-text']};
     max-height: 260px;
     height: 100%;
@@ -29,7 +30,15 @@ export const Container = styled.a`
  
 `
 
+export const ContainerLink = styled(Link)`
+  text-decoration: none;
+  color: ${props => props.theme['base-text']};
+`
+
+
+
 export const HeaderCard = styled.div`
+  
   display: flex;
   justify-content: space-between;
   align-items: start;
@@ -48,6 +57,12 @@ export const HeaderCard = styled.div`
   span {
     font-size: 0.875rem;
     line-height: 160%;
+
+    @media (max-width: 884px){
+      position: absolute;
+      top: 6px;
+      right: 6px;
+    }
   }
 
   

@@ -21,30 +21,22 @@ export const ProfileContainer = styled.main`
   }
 `
 
-export const Navegation = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-`
-
-
 export const Footer = styled.footer`
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 2rem;
 
+  @media (max-width: 884px){
+    flex-direction: column;
+    gap: 1rem;
+  }
 `
 
-export const Back = styled.a`
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  color: ${props => props.theme['blue']};
-  font-weight: 700;
+
+export const BodyPostSkeleton = styled.div`
+  padding: 2.5rem 2rem;
+
 `
 
 export const BodyPost = styled(Markdown)`

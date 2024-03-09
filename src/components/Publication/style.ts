@@ -34,6 +34,10 @@ export const CardsContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
+
+  @media (max-width: 887px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 

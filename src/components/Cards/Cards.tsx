@@ -1,4 +1,4 @@
-import { Container, HeaderCard } from "./style";
+import { Container, ContainerLink, HeaderCard } from "./style";
 import { formatDistanceDate } from "../../utils/formatDate";
 
 
@@ -10,13 +10,15 @@ export interface CardsComponent {
 }
 export function CardsComponent({title, description, created_at, number}: CardsComponent){
   return(
-    <Container href={`/post/${number}`}>
-      <HeaderCard>
-        <h2>{title}</h2>
-        <span>Há {formatDistanceDate(created_at)}</span>
-      </HeaderCard>
-      <p>{description}</p>
-    </Container>
+      <Container >
+        <ContainerLink to={`/post/${number}`}>
+          <HeaderCard>
+            <h2>{title}</h2>
+            <span>Há {formatDistanceDate(created_at)}</span>
+          </HeaderCard>
+          <p>{description}</p>
+        </ContainerLink>
+      </Container>
   )
 }
 

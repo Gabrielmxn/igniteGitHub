@@ -1,13 +1,13 @@
-import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Cards } from "../Cards";
 import { CardsContainer, Container, HeaderInfo, InputSearch } from "./style";
 import { api } from "../../utils/axios";
 import { useForm } from "react-hook-form";
 import * as z from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
-import { InfoContext } from "../../context/RepoInfoContext";
 import { useContextApiInfoUserAndRepo } from "../../hook/useContextApiInfoUserAndRepo";
 import { SkeletonPublication } from "./SkeletonPublication";
+import { SkeletonCard } from "../Cards/Skeleton/SkeletonCard";
 
 
 interface RepositoryType {
@@ -34,7 +34,7 @@ const schema = z.object({
 export function PublicationComponent(){
 
   const {user, repo} = useContextApiInfoUserAndRepo()
-  const { register, handleSubmit, getValues  } = useForm({
+  const { register, getValues  } = useForm({
     resolver: zodResolver(schema),
   });
   const [posts, setPosts] = useState<AxiosPostsType>({
@@ -42,17 +42,14 @@ export function PublicationComponent(){
     total_count: 0
   })
 
-  console.log('item', posts.items)
-
-  async function getPosts(event?: ChangeEvent){
-    const query = `${getValues('query')} ` || ' '
+  async function getPosts(){
+    const query = getValues('query') ? `${getValues('query')} ` : ' '
    try{
     setTimeout(async () => {
       const response = await api.get<AxiosPostsType>(`/search/issues?q=${query}repo:${user}/${repo}`)
-    console.log(response.data.items[0].body.slice(0,200))
-    if(response.data.total_count > 0){
-      setPosts(response.data)
-    }
+      if(response.data.total_count > 0){
+        setPosts(response.data)
+      }
     }, 2000)
    }catch(error){
     console.log(error)
@@ -68,9 +65,6 @@ export function PublicationComponent(){
         open_issues_count: repo.open_issues_count
       }
     })
-
-  
-    console.log(repository)
   }
   useEffect(() => {
     getPosts()
@@ -79,6 +73,7 @@ export function PublicationComponent(){
   return(
     <>
     {posts.total_count > 0 ? 
+      <>
       <Container>
         <HeaderInfo>
           <h2>Publicações</h2>
@@ -90,23 +85,30 @@ export function PublicationComponent(){
           })} type="text" placeholder="Buscar conteúdo"/>
         </form>
       </Container>
-        : <SkeletonPublication />}
       <CardsContainer>
-        {posts.items.map(response => {
-         
-          return(
-            <Cards 
-              key={response.number}
-              number={response.number}
-              description={response.body}
-              title={response.title}
-              created_at={response.created_at}
-            />
-          )
-        })}
-
+      {posts.items.map(response => {
+       
+        return(
+          <Cards 
+            key={response.number}
+            number={response.number}
+            description={response.body}
+            title={response.title}
+            created_at={response.created_at}
+          />
+        )
+      })}
+    </CardsContainer>
+      
+      </>
+        : <>
+          <SkeletonPublication />
+          <CardsContainer>
+            <SkeletonCard quant={4}/>
+          </CardsContainer>
+        </>
         
-      </CardsContainer>
+        }
     </>
   )
 }

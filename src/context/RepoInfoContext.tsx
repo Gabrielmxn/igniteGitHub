@@ -10,8 +10,8 @@ interface InfoContextProps {
 export const InfoContext = createContext<InfoContextProps>({} as InfoContextProps)
 
 export function RepoInfoContext({children}: RepoInfoContextProps){
-  const user = 'rocketseat-education'
-  const repo = 'reactjs-github-blog-challenge'
+  const user = 'gabrielmxn'
+  const repo = 'igniteGithub'
 
   return(
     <InfoContext.Provider value={{

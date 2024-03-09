@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { api } from "../../utils/axios"
-import { Avatar, Description, Footer, HeaderContainer, InfoTest, ProfileContainer } from "./style";
+import { Avatar, Description, Footer, HeaderContainer, InfoTest, LinkGithub, ProfileContainer } from "./style";
 import { Links } from "../Links";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
@@ -30,7 +30,7 @@ export function ProfileComponent(){
       const response = await api.get<GetProfileAxiosTypes>(`/users/${user}`)
 
       setProfile(response.data)
-    }, 4000)
+    }, 2000)
     
   }
   useEffect(() => {
@@ -43,7 +43,10 @@ export function ProfileComponent(){
       <InfoTest>
         <HeaderContainer>
           <h1>{profile.name}</h1>
-          <Links label="GITHUB" url={profile.html_url}/>
+          <LinkGithub>
+            <Links label="GITHUB" url={profile.html_url}/>
+          </LinkGithub>
+          
         </HeaderContainer>
         <Description>{profile.bio}</Description>
         <Footer>

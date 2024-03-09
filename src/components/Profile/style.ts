@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { Links } from "../Links";
 
 
 export const ProfileContainer = styled.main`
+  position: relative;
   max-width: 864px;
   width: 100%;
   margin: 0 auto;
@@ -15,13 +17,23 @@ export const ProfileContainer = styled.main`
 
   box-shadow: 0 2px 28px 0 #00000020;
   margin-top: calc(2rem * -2);
+
+  @media (max-width: 884px){
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `
 
 export const Avatar = styled.img`
-  width: 148px;
-  height: 148px;
+  max-width: 148px;
+  max-height: 148px;
   border-radius: 8px;
   object-fit: contain;
+
+  @media (max-width: 884px){
+    width: 64px;
+    height: 64px;
+  }
 
 `
 
@@ -47,11 +59,25 @@ export const Description = styled.p`
   font-weight: 400;
 `
 
+export const LinkGithub = styled.div`
+
+  @media (max-width: 884px){
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+`
+
 export const Footer = styled.footer`
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 1.5rem;
+
+  @media (max-width: 884px){
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
 `
 
@@ -62,11 +88,13 @@ export const InfoTest = styled.div`
 interface SkeletonProps {
   width: string
   height: string
+  margintop?: string
 }
 export const Skeleton = styled.div<SkeletonProps>`
   background-color: ${props => props.theme['blue']};
   width: ${props => `${props.width}`};
   height: ${props => `${props.height}`};
+  margin-top: ${props => `${props.margintop}`};
   border-radius: 4px;
   animation: pulse 2s ease-in-out infinite;
   @keyframes pulse {
