@@ -1,30 +1,51 @@
-# React + TypeScript + Vite
+# GitHub Issue Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto desenvolvido como parte de um desafio, onde o objetivo é criar uma aplicação que utiliza a API do GitHub para buscar issues de um repositório, dados do seu perfil e exibi-las como um blog.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Listagem do Perfil:** Exibe informações do perfil do usuário, incluindo imagem, número de seguidores, nome e outras informações disponíveis pela API do GitHub.
 
-## Expanding the ESLint configuration
+- **Listagem e Filtro de Issues:** Lista e filtra todas as issues do repositório, fornecendo um pequeno resumo do conteúdo de cada uma.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Visualização Completa de Issue:** Permite visualizar uma issue completa em uma página dedicada.
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologias Utilizadas
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- ReactJS: Biblioteca JavaScript para construção de interfaces de usuário.
+- Zod: Biblioteca para validação de dados em TypeScript.
+- React Form Hook: Hook para formulários em React.
+- Styled Components: Biblioteca para estilização de componentes em React.
+- TypeScript: Linguagem de programação que adiciona tipagem estática opcional ao JavaScript.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Instalação
+
+Para executar este projeto localmente, siga estas etapas:
+
+1. Clone este repositório:
+
+   ```
+   git clone https://github.com/gabrielmxn/igniteGithub.git
+   ```
+
+2. Acesse o diretório do projeto:
+
+   ```
+   cd igniteGithub
+   ```
+
+3. Instale as dependências:
+
+   ```
+   npm install
+   ```
+
+4. Inicie o servidor de desenvolvimento:
+
+   ```
+   npm run dev
+   ```
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
