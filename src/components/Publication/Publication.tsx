@@ -81,7 +81,7 @@ export function PublicationComponent(){
         </HeaderInfo>
         <form >
           <InputSearch {...register('query', {
-             onChange: (e) => getPosts(e)
+             onChange: () => getPosts()
           })} type="text" placeholder="Buscar conteúdo"/>
         </form>
       </Container>
