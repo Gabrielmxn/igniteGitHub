@@ -8,20 +8,20 @@ export function SkeletonPost(){
    <>
     <ProfileContainer>
       <SkeletonInfoPost />
-      <Skeleton width="100%" height="20px" margintop="1rem"/>
+      <Skeleton width={60} height="40px" margintop="1rem"/>
       <FooterSkeleton />
     </ProfileContainer>
      <div>
       <BodyPostSkeleton>
-        <Skeleton width="100%" height="16px" margintop="0.5rem"/>
-        <Skeleton width="90%" height="16px" margintop="0.5rem"/>
-        <Skeleton width="80%" height="16px" margintop="0.5rem"/>
-        <Skeleton width="100%" height="16px" margintop="2rem"/>
-        <Skeleton width="90%" height="16px" margintop="0.5rem"/>
-        <Skeleton width="80%" height="16px" margintop="0.5rem"/>
-        <Skeleton width="100%" height="16px" margintop="2rem"/>
-        <Skeleton width="90%" height="16px" margintop="0.5rem"/>
-        <Skeleton width="80%" height="16px" margintop="0.5rem"/>
+        <Skeleton width={100} height="16px" margintop="0.5rem"/>
+        <Skeleton width={90} height="16px" margintop="0.5rem"/>
+        <Skeleton width={80} height="16px" margintop="0.5rem"/>
+        <Skeleton width={100} height="16px" margintop="0.5rem"/>
+        <Skeleton width={90} height="16px" margintop="0.5rem"/>
+        <Skeleton width={80} height="16px" margintop="0.5rem"/>
+        <Skeleton width={100} height="16px" margintop="0.5rem"/>
+        <Skeleton width={90} height="16px" margintop="0.5rem"/>
+        <Skeleton width={80} height="16px" margintop="0.5rem"/>
       </BodyPostSkeleton>
      
     </div>

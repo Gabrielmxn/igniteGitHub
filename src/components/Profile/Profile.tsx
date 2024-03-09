@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { api } from "../../utils/axios"
-import { Avatar, Description, Footer, HeaderContainer, InfoTest, LinkGithub, ProfileContainer } from "./style";
+import { Avatar, AvatarContainer, Description, Footer, HeaderContainer, InfoTest, LinkGithub, ProfileContainer } from "./style";
 import { Links } from "../Links";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
@@ -39,7 +39,9 @@ export function ProfileComponent(){
   return(
     <>
     {profile.login ? (  <ProfileContainer>
-      <Avatar src={profile.avatar_url} alt="" />
+      <AvatarContainer>
+        <Avatar src={profile.avatar_url} alt="" />
+      </AvatarContainer>
       <InfoTest>
         <HeaderContainer>
           <h1>{profile.name}</h1>

@@ -7,7 +7,7 @@ export function SkeletonInfoPost(){
   return(
     <Navegation>
       <Links label="VOLTAR" url="/" icon={faChevronLeft} iconPosition="left"/>
-      <Skeleton width="100px" height="20px"/>
+      <Skeleton width={20} height="20px"/>
     </Navegation>
   )
 }

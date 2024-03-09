@@ -24,17 +24,24 @@ export const ProfileContainer = styled.main`
   }
 `
 
-export const Avatar = styled.img`
-  max-width: 148px;
-  max-height: 148px;
+export const AvatarContainer = styled.div`
+  width: 148px;
+  height: 148px;
   border-radius: 8px;
-  object-fit: contain;
+
 
   @media (max-width: 884px){
     width: 64px;
     height: 64px;
   }
 
+`
+
+export const Avatar = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: contain;
 `
 
 export const HeaderContainer = styled.header`
@@ -64,7 +71,7 @@ export const LinkGithub = styled.div`
   @media (max-width: 884px){
     position: absolute;
     top: 4px;
-    right: 4px;
+    right: 8px;
   }
 `
 
@@ -72,6 +79,7 @@ export const Footer = styled.footer`
   display: flex;
   justify-content: start;
   align-items: center;
+  width: 100%;
   gap: 1.5rem;
 
   @media (max-width: 884px){
@@ -82,18 +90,19 @@ export const Footer = styled.footer`
 `
 
 export const InfoTest = styled.div`
+  width: 100%;
   flex: 1;
 `
 
 interface SkeletonProps {
-  width: string
-  height: string
+  width: number | string
+  height: number | string
   margintop?: string
 }
 export const Skeleton = styled.div<SkeletonProps>`
   background-color: ${props => props.theme['blue']};
-  width: ${props => `${props.width}`};
-  height: ${props => `${props.height}`};
+  width: ${props => typeof props.width === 'number' ? props.width + '%' : `${props.width}px`};
+  height: ${props => typeof props.height === 'number' ? props.height + '%' : `${props.height}`};
   margin-top: ${props => `${props.margintop}`};
   border-radius: 4px;
   animation: pulse 2s ease-in-out infinite;

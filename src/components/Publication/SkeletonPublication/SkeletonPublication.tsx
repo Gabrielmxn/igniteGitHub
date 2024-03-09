@@ -8,7 +8,7 @@ export function SkeletonPublicationComponent(){
         <HeaderInfo>
           <h2>Publicações</h2>
           <InfoPublicationNumber>
-            <Skeleton height="24px" width="24px" /> 
+            <Skeleton height="24px" width="24" /> 
             <span>publicações</span>
           </InfoPublicationNumber>
         </HeaderInfo>

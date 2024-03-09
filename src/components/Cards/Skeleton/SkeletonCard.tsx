@@ -13,12 +13,12 @@ export function SkeletonCard({quant}: SkeletonCardProps){
         <Container key={index}>
         <HeaderCard>
           <div>
-            <Skeleton width="100px" height="20px"/>
-            <Skeleton width="100px" height="20px" margintop="1rem"/>
+            <Skeleton width='100' height="20px"/>
+            <Skeleton width='100' height="20px" margintop="1rem"/>
           </div>
-          <Skeleton width="40px" height="20px"/>
+          <Skeleton width="40" height="20px"/>
         </HeaderCard>
-        <Skeleton width="100%" height="100px"/>
+        <Skeleton width={100} height="100px"/>
      
       </Container>
       )
