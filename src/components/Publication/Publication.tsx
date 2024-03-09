@@ -10,11 +10,11 @@ import { SkeletonPublication } from "./SkeletonPublication";
 import { SkeletonCard } from "../Cards/Skeleton/SkeletonCard";
 
 
-interface RepositoryType {
-  id: number
-  name: string
-  open_issues_count: number
-}
+// interface RepositoryType {
+//   id: number
+//   name: string
+//   open_issues_count: number
+// }
 interface PostsType {
   title: string
   body: string
@@ -56,19 +56,19 @@ export function PublicationComponent(){
    }
   }
 
-  async function getRepositorys(){
-    const response = await api.get<RepositoryType[]>(`/users/${user}/repos`)
-    const repository = response.data.filter(response => response.open_issues_count > 0).map(repo => {
-      return {
-        id: repo.id,
-        name: repo.name,
-        open_issues_count: repo.open_issues_count
-      }
-    })
-  }
+  // async function getRepositorys(){
+  //   const response = await api.get<RepositoryType[]>(`/users/${user}/repos`)
+  //   const repository = response.data.filter(response => response.open_issues_count > 0).map(repo => {
+  //     return {
+  //       id: repo.id,
+  //       name: repo.name,
+  //       open_issues_count: repo.open_issues_count
+  //     }
+  //   })
+  // }
   useEffect(() => {
     getPosts()
-    getRepositorys()
+    //getRepositorys()
   }, [])
   return(
     <>

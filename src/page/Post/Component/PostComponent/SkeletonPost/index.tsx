@@ -1,6 +1,6 @@
 import { SkeletonInfoPost } from "../../../../../components/InfoPost/Skeleton/SkeletonInfoPost";
 import { Skeleton } from "../../../../../components/Profile/style";
-import { BodyPost, BodyPostSkeleton, ProfileContainer } from "../../../style";
+import {  BodyPostSkeleton, ProfileContainer } from "../../../style";
 import { FooterSkeleton } from "../../Footer/Skeleton/FooterSkeleton";
 
 export function SkeletonPost(){

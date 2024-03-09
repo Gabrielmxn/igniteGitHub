@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Footer, FooterInfo } from "./style";
+import {  FooterInfo } from "./style";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export interface InfoContainerType {
