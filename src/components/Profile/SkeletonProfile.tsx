@@ -1,4 +1,4 @@
-import { Avatar, AvatarContainer, Description, Footer, HeaderContainer, InfoTest, LinkGithub, ProfileContainer, Skeleton } from "./style";
+import {  AvatarContainer, Description, Footer, HeaderContainer, InfoTest, LinkGithub, ProfileContainer, Skeleton } from "./style";
 
 export function SkeletonProfile(){
   return(
